@@ -9,9 +9,9 @@ Big Data Analysis of Yelp Dataset using Hadoop/Hive for CIS5560 Term Project at 
 ## Authors
 - **Name:** Sean Dewert, Abraham Rosales, Edgar Lomeli, Mike Barba, Zaeem Malik
 - **Email:** sdewert@calstatela.edu
-- **Course:** CIS4560 - Big Data Analytics
+- **Course:** CIS4560-02 - Big Data Analytics
 - **Instructor:** Dr. Jongwook Woo
-- **Semester:** 
+- **Semester:** Fall 2025 Semester
 
 ## Dataset
 - **Source:** [Yelp Open Dataset](https://www.yelp.com/dataset)
