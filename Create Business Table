@@ -1,3 +1,4 @@
+--What this code does is define the schema to read the raw JSON data.
 USE sdewert;
 
 -- Drop table if exists (for clean start)
