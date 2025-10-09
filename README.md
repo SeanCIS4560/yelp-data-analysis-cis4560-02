@@ -6,8 +6,8 @@ Big Data Analysis of Yelp Dataset using Hadoop/Hive for CIS5560 Term Project
 ## Project Overview
 Big Data Analysis of Yelp Dataset using Hadoop/Hive for CIS5560 Term Project at Cal State LA. This project analyzes restaurant and business data to identify tempo-spatial patterns in customer behavior and business performance.
 
-## Author
-- **Name:** Sean Dewert
+## Authors
+- **Name:** Sean Dewert, Abraham Rosales, Edgar Lomeli, Mike Barba, Zaeem Malik
 - **Email:** sdewert@calstatela.edu
 - **Course:** CIS4560 - Big Data Analytics
 - **Instructor:** Dr. Jongwook Woo
