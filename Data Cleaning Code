@@ -1,0 +1,26 @@
+--The purpose of this code will be to clean the code as much as possible.
+--Spacial data cleaning for the mapping process for said project.
+
+-- Create cleaned business table for mapping
+CREATE TABLE business_clean AS
+SELECT 
+    business_id,
+    name,
+    city,
+    state,
+    latitude,
+    longitude,
+    stars,
+    review_count,
+    categories
+FROM business
+WHERE 
+    -- Remove invalid coordinates
+    latitude IS NOT NULL 
+    AND longitude IS NOT NULL
+    AND latitude BETWEEN -90 AND 90
+    AND longitude BETWEEN -180 AND 180
+    -- Focus on specific states if needed
+    AND state IN ('CA', 'AZ', 'NV', 'PA')  -- Major Yelp states
+    -- Remove closed businesses
+    AND is_open = 1;
