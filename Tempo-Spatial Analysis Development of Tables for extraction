@@ -1,0 +1,40 @@
+-- Tempo-Spatial Analysis Process below:
+
+
+--1 Spatial Analysis - Top Cities
+
+CREATE TABLE spatial_results AS
+SELECT city, state, 
+       COUNT(*) as business_count,
+       AVG(stars) as avg_rating,
+       AVG(latitude) as avg_lat,
+       AVG(longitude) as avg_lon
+FROM business_clean
+GROUP BY city, state
+ORDER BY business_count DESC
+LIMIT 50;
+
+--2 Temporal Analysis - Review Trends
+
+CREATE TABLE temporal_results AS
+SELECT review_year, review_month,
+       COUNT(*) as review_count,
+       AVG(stars) as avg_rating
+FROM review_clean
+WHERE review_year >= 2015
+GROUP BY review_year, review_month
+ORDER BY review_year, review_month;
+
+--3 Combined Tempo-Spatial - Peak Times by location
+
+CREATE TABLE tempo_spatial_results AS
+SELECT b.city, b.state,
+       r.review_year,
+       r.review_month,
+       COUNT(*) as reviews,
+       AVG(r.stars) as avg_rating
+FROM review_clean r
+JOIN business_clean b ON r.business_id = b.business_id
+GROUP BY b.city, b.state, r.review_year, r.review_month
+ORDER BY reviews DESC
+LIMIT 1000;
