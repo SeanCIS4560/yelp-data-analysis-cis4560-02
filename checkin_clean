@@ -1,0 +1,9 @@
+--Cleaned checkin data
+
+CREATE TABLE checkin_clean AS
+SELECT 
+    business_id,
+    `date` as checkin_dates_raw,
+    SIZE(SPLIT(`date`, ',')) as checkin_count
+FROM checkin
+WHERE `date` IS NOT NULL;
