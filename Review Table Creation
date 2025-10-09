@@ -1,0 +1,20 @@
+--Creation of the Review Table
+
+-- Create Review table
+CREATE EXTERNAL TABLE IF NOT EXISTS review (
+    review_id STRING,
+    user_id STRING,
+    business_id STRING,
+    stars INT,
+    `date` STRING,
+    text STRING,
+    useful INT,
+    funny INT,
+    cool INT
+)
+ROW FORMAT SERDE 'org.apache.hive.hcatalog.data.JsonSerDe'
+STORED AS TEXTFILE
+LOCATION '/user/sdewert/yelp_project/review/';
+
+-- Verify
+SELECT COUNT(*) FROM review;
