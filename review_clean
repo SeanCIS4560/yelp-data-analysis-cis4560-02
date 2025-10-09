@@ -1,0 +1,15 @@
+--Cleaned review table
+
+CREATE TABLE review_clean AS
+SELECT 
+    review_id,
+    business_id,
+    user_id,
+    stars,
+    `date` as review_date,
+    YEAR(`date`) as review_year,
+    MONTH(`date`) as review_month
+FROM review
+WHERE 
+    `date` IS NOT NULL
+    AND `date` >= '2010-01-01';
