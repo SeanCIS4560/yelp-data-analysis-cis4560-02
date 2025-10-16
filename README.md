@@ -33,4 +33,18 @@ Big Data Analysis of Yelp Dataset using Hadoop/Hive for CIS4560-02 Term Project 
 - **Power BI/Excel** - Visualization and tempo-spatial mapping
 - **Python** (optional) - Additional data processing
 
-## Project Structure
+## Hardware/Cluster Specifications:
+- **Cluster Type:** Oracle Cloud Infrastructure
+- **Number of Worker Nodes:** 3
+- **CPU Model:** AMD EPYC 7763 64-Core Processor
+- **CPU Cores:** 6
+- **CPU Speed:** 2445.406 MHz
+- **Total Memory:** 31 GB
+- **Total Storage:** 318 GB (120GB root + 198GB /u01)
+- **HDFS Capacity:** 390.17 GB
+- **HDFS Used:** 82.81 GB (21.27%)
+- **Hadoop Version:** 3.1.2
+- **Hive Version:** 3.1.2
+
+
+
