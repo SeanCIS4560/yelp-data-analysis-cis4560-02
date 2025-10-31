@@ -13,7 +13,7 @@
 ### Objectives
 
 In this hands-on lab, we will go over how to:
-- Download and prepare 2+ GB Yelp Academic Dataset  
+- Download and prepare 4+ GB Yelp Academic Dataset  
 - Upload JSON data to HDFS on Oracle Cloud Infrastructure
 - Create and clean Hive tables using JsonSerDe
 - Perform tempo-spatial analysis combining location and time dimensions
