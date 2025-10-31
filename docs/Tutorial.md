@@ -244,7 +244,8 @@ WHERE
     AND is_open = 1;
 ```
 
-[Screenshot placeholder: Business cleaning results]
+<img width="458" height="250" alt="image" src="https://github.com/user-attachments/assets/3cfa5a47-87fc-4840-87a7-327f8b1e36c1" />
+
 
 **Clean Review Data (Temporal Focus):**
 ```sql
@@ -262,6 +263,8 @@ WHERE
     `date` IS NOT NULL
     AND `date` >= '2010-01-01';
 ```
+<img width="449" height="226" alt="image" src="https://github.com/user-attachments/assets/ca883a5d-6a19-4084-a1b0-d61e2811c53c" />
+
 
 **Clean Check-in Data:**
 ```sql
@@ -273,6 +276,7 @@ SELECT
 FROM checkin
 WHERE `date` IS NOT NULL;
 ```
+<img width="511" height="138" alt="image" src="https://github.com/user-attachments/assets/4a95795d-8145-44fe-b308-5b8f5d0fb0c7" />
 
 ---
 
@@ -293,6 +297,8 @@ GROUP BY city, state
 ORDER BY business_count DESC
 LIMIT 50;
 ```
+<img width="472" height="192" alt="image" src="https://github.com/user-attachments/assets/9384eb20-3561-4211-8b63-b2b3e7756387" />
+
 
 **2. Temporal Analysis - Monthly Review Trends:**
 ```sql
@@ -305,6 +311,8 @@ WHERE review_year >= 2015
 GROUP BY review_year, review_month
 ORDER BY review_year, review_month;
 ```
+<img width="445" height="150" alt="image" src="https://github.com/user-attachments/assets/af71edaa-ea1d-48d0-9531-e7ac7307b771" />
+
 
 **3. Combined Tempo-Spatial - Peak Times by Location:**
 ```sql
@@ -321,7 +329,8 @@ ORDER BY reviews DESC
 LIMIT 1000;
 ```
 
-[Screenshot placeholder: Query execution times and row counts]
+<img width="451" height="190" alt="image" src="https://github.com/user-attachments/assets/c5f6883b-5472-4ad1-9b7d-d3bb5a01c46f" />
+
 
 ---
 
@@ -329,29 +338,39 @@ LIMIT 1000;
 
 **This step exports analysis results for visualization in Power BI or Excel.**
 
-```bash
-# Export spatial results
-beeline -u jdbc:hive2://localhost:10000 \
---outputformat=csv2 --showHeader=true \
--e "SELECT * FROM spatial_results" > spatial_results.csv
+**Now that we are exporting to an excel file type we can delimit, without
+the JSON issues from earlier.
 
-# Export temporal results  
-beeline -u jdbc:hive2://localhost:10000 \
---outputformat=csv2 --showHeader=true \
--e "SELECT * FROM temporal_results" > temporal_results.csv
+USE database;
 
-# Export combined results
-beeline -u jdbc:hive2://localhost:10000 \
---outputformat=csv2 --showHeader=true \
--e "SELECT * FROM tempo_spatial_results" > tempo_spatial_results.csv
-```
+-- Export to HDFS (not LOCAL)
+INSERT OVERWRITE DIRECTORY '/user/sdewert/export/spatial'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+SELECT * FROM spatial_results;
 
-Transfer files to local machine:
-```bash
-scp sdewert@cluster:*.csv ./Desktop/yelp_results/
-```
+INSERT OVERWRITE DIRECTORY '/user/sdewert/export/temporal'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+SELECT * FROM temporal_results;
 
+INSERT OVERWRITE DIRECTORY '/user/sdewert/export/tempo_spatial'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+SELECT * FROM tempo_spatial_results;
+
+hadoop fs -getmerge /user/sdewert/export/spatial spatial_results.csv
+hadoop fs -getmerge /user/sdewert/export/temporal temporal_results.csv
+hadoop fs -getmerge /user/sdewert/export/tempo_spatial tempo_spatial_results.csv
+
+# From your local Windows/Mac terminal
+scp sdewert@129.153.113.98:~/spatial_results.csv .
+scp sdewert@129.153.113.98:~/temporal_results.csv .
+scp sdewert@129.153.113.98:~/tempo_spatial_results.csv
 ---
+
+<img width="772" height="113" alt="image" src="https://github.com/user-attachments/assets/57557d20-e044-41f1-ade2-02e94983daa2" />
+
 
 ## Step 7: Create Visualizations in Power BI
 
