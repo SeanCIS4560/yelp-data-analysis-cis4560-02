@@ -368,7 +368,6 @@ scp sdewert@129.153.113.98:~/spatial_results.csv .
 scp sdewert@129.153.113.98:~/temporal_results.csv .
 scp sdewert@129.153.113.98:~/tempo_spatial_results.csv .
 
-
 <img width="772" height="113" alt="image" src="https://github.com/user-attachments/assets/57557d20-e044-41f1-ade2-02e94983daa2" />
 
 
