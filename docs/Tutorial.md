@@ -1,5 +1,3 @@
-<img width="1007" height="127" alt="image" src="https://github.com/user-attachments/assets/ad4c3fd7-dae7-4cb3-8a60-a4cd874ec6d4" /># CIS4560 Term Project Tutorial
-
 ## Yelp Data Analysis using Hadoop/Hive for Tempo-Spatial Business Insights
 
 **Authors:** Sean Dewert , Abraham Rosales, Edgar Lomeli, Mike Barba, Zaeem Malik
