@@ -57,12 +57,7 @@ In this hands-on lab, we will go over how to:
 <img width="1333" height="212" alt="image" src="https://github.com/user-attachments/assets/0100a557-91e3-4aa2-a7c7-75d20f495061" />
 
 
-4. Verify JSON format - each line is a complete JSON object:
-   ```bash
-   head -n 1 business.json | python -m json.tool
-   ```
-
----
+4. Verify JSON format, look at the document type presented.
 
 ## Step 2: Upload Data to HDFS
 
