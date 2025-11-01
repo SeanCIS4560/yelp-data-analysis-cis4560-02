@@ -344,20 +344,43 @@ the JSON issues from earlier.
 USE database;
 
 -- Export to HDFS (not LOCAL)
+-- For spatial_results WITH HEADERS
 INSERT OVERWRITE DIRECTORY '/user/sdewert/export/spatial'
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
-SELECT * FROM spatial_results;
+SELECT 'city', 'state', 'business_count', 'avg_rating', 'avg_lat', 'avg_lon'
+UNION ALL
+SELECT city, state, 
+       CAST(business_count AS STRING),
+       CAST(avg_rating AS STRING), 
+       CAST(avg_lat AS STRING),
+       CAST(avg_lon AS STRING)
+FROM spatial_results;
 
+-- For temporal_results WITH HEADERS
 INSERT OVERWRITE DIRECTORY '/user/sdewert/export/temporal'
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
-SELECT * FROM temporal_results;
+SELECT 'review_year', 'review_month', 'review_count', 'avg_rating'
+UNION ALL
+SELECT CAST(review_year AS STRING),
+       CAST(review_month AS STRING),
+       CAST(review_count AS STRING),
+       CAST(avg_rating AS STRING)
+FROM temporal_results;
 
+-- For tempo_spatial_results WITH HEADERS
 INSERT OVERWRITE DIRECTORY '/user/sdewert/export/tempo_spatial'
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
-SELECT * FROM tempo_spatial_results;
+SELECT 'city', 'state', 'review_year', 'review_month', 'reviews', 'avg_rating'
+UNION ALL
+SELECT city, state,
+       CAST(review_year AS STRING),
+       CAST(review_month AS STRING),
+       CAST(reviews AS STRING),
+       CAST(avg_rating AS STRING)
+FROM tempo_spatial_results;
 
 MERGE HDFS files into CSV format:
 
