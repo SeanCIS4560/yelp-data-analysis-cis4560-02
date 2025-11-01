@@ -275,7 +275,7 @@ SELECT
     SIZE(SPLIT(`date`, ',')) as checkin_count
 FROM checkin
 WHERE `date` IS NOT NULL;
-```
+``` 
 <img width="511" height="138" alt="image" src="https://github.com/user-attachments/assets/4a95795d-8145-44fe-b308-5b8f5d0fb0c7" />
 
 ---
