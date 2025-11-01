@@ -350,11 +350,11 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 SELECT 'city', 'state', 'business_count', 'avg_rating', 'avg_lat', 'avg_lon'
 UNION ALL
-SELECT city, state, 
-       CAST(business_count AS STRING),
-       CAST(avg_rating AS STRING), 
-       CAST(avg_lat AS STRING),
-       CAST(avg_lon AS STRING)
+SELECT city, state,
+CAST(business_count AS STRING),
+CAST(avg_rating AS STRING),
+CAST(avg_lat AS STRING),
+CAST(avg_lon AS STRING)
 FROM spatial_results;
 
 -- For temporal_results WITH HEADERS
@@ -364,9 +364,9 @@ FIELDS TERMINATED BY ','
 SELECT 'review_year', 'review_month', 'review_count', 'avg_rating'
 UNION ALL
 SELECT CAST(review_year AS STRING),
-       CAST(review_month AS STRING),
-       CAST(review_count AS STRING),
-       CAST(avg_rating AS STRING)
+CAST(review_month AS STRING),
+CAST(review_count AS STRING),
+CAST(avg_rating AS STRING)
 FROM temporal_results;
 
 -- For tempo_spatial_results WITH HEADERS
@@ -376,17 +376,17 @@ FIELDS TERMINATED BY ','
 SELECT 'city', 'state', 'review_year', 'review_month', 'reviews', 'avg_rating'
 UNION ALL
 SELECT city, state,
-       CAST(review_year AS STRING),
-       CAST(review_month AS STRING),
-       CAST(reviews AS STRING),
-       CAST(avg_rating AS STRING)
+CAST(review_year AS STRING),
+CAST(review_month AS STRING),
+CAST(reviews AS STRING),
+CAST(avg_rating AS STRING)
 FROM tempo_spatial_results;
 
 MERGE HDFS files into CSV format:
 
-hadoop fs -getmerge /user/sdewert/export/spatial spatial_results.csv
-hadoop fs -getmerge /user/sdewert/export/temporal temporal_results.csv
-hadoop fs -getmerge /user/sdewert/export/tempo_spatial tempo_spatial_results.csv
+hdfs dfs -cat /user/sdewert/export/spatial/HIVE_UNION_SUBDIR_1/* /user/sdewert/export/spatial/HIVE_UNION_SUBDIR_2/* > spatial_results.csv
+hdfs dfs -cat /user/sdewert/export/temporal/HIVE_UNION_SUBDIR_1/* /user/sdewert/export/temporal/HIVE_UNION_SUBDIR_2/* > temporal_results.csv
+hdfs dfs -cat /user/sdewert/export/tempo_spatial/HIVE_UNION_SUBDIR_1/* /user/sdewert/export/tempo_spatial/HIVE_UNION_SUBDIR_2/* > tempo_spatial_results.csv
 
 SCP copy to your local machine:
 scp sdewert@129.153.113.98:/home/sdewert/spatial_results.csv .
