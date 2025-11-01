@@ -384,9 +384,6 @@ scp sdewert@129.153.113.98:/home/sdewert/tempo_spatial_results.csv .
 <img width="644" height="55" alt="image" src="https://github.com/user-attachments/assets/dd61fff1-59e2-4e1a-b50c-3c4cd44bad0a" />
 <img width="792" height="255" alt="image" src="https://github.com/user-attachments/assets/f3eafdab-5bdc-4268-9db1-bce747a4b654" />
 
-
-[Screenshot placeholder: Power BI data import]
-
 2. **Create Geographic Heat Map:**
    - Insert Map visualization
    - Location: avg_lat, avg_lon
