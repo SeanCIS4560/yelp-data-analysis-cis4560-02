@@ -338,49 +338,30 @@ LIMIT 1000;
 
 **This step exports analysis results for visualization in Power BI or Excel.**
 
-**Now that we are exporting to an excel file type we can delimit, without
-the JSON issues from earlier.
+OBTAIN your JDBC line from BEELINE:
 
-USE database;
+In HDFS, type beeline, then look for your JDBC line as follows:
 
--- Export to HDFS (not LOCAL)
--- For spatial_results WITH HEADERS
-INSERT OVERWRITE DIRECTORY '/user/sdewert/export/spatial'
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-SELECT 'city', 'state', 'business_count', 'avg_rating', 'avg_lat', 'avg_lon'
-UNION ALL
-SELECT city, state,
-CAST(business_count AS STRING),
-CAST(avg_rating AS STRING),
-CAST(avg_lat AS STRING),
-CAST(avg_lon AS STRING)
-FROM spatial_results;
+jdbc:hive2://bigdaiun0.sub03291929060.trainingvcn.oraclevcn.com:2181,bigdaimn0.sub03291929060.trainingvcn.oraclevcn.com:2181,bigdaiwn0.sub03291929060.trainingd=sdewert;serviceDiscoveryMode=zooKeeper;user=sdewert;zooKeeperNamespace=hiveserver2
 
--- For temporal_results WITH HEADERS
-INSERT OVERWRITE DIRECTORY '/user/sdewert/export/temporal'
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-SELECT 'review_year', 'review_month', 'review_count', 'avg_rating'
-UNION ALL
-SELECT CAST(review_year AS STRING),
-CAST(review_month AS STRING),
-CAST(review_count AS STRING),
-CAST(avg_rating AS STRING)
-FROM temporal_results;
+<img width="1887" height="43" alt="image" src="https://github.com/user-attachments/assets/cb1848bb-1e6f-42d9-90e0-6132fdc98ec0" />
 
--- For tempo_spatial_results WITH HEADERS
-INSERT OVERWRITE DIRECTORY '/user/sdewert/export/tempo_spatial'
-ROW FORMAT DELIMITED
-FIELDS TERMINATED BY ','
-SELECT 'city', 'state', 'review_year', 'review_month', 'reviews', 'avg_rating'
-UNION ALL
-SELECT city, state,
-CAST(review_year AS STRING),
-CAST(review_month AS STRING),
-CAST(reviews AS STRING),
-CAST(avg_rating AS STRING)
-FROM tempo_spatial_results;
+Then place that JDBC line into the following lines in BASH:
+
+beeline -u "jdbc:hive2://bigdaiun0.sub03291929060.trainingvcn.oraclevcn.com:2181,bigdaimn0.sub03291929060.trainingvcn.oraclevcn.com:2181,bigdaiwn0.sub03291929060.trainingvcn.oraclevcn.com:2181/default;password=sdewert;serviceDiscoveryMode=zooKeeper;user=sdewert;zooKeeperNamespace=hiveserver2" \
+  --outputformat=csv2 \
+  --showHeader=true \
+  -e "USE sdewert; SELECT * FROM spatial_results" > spatial_results.csv
+
+beeline -u "jdbc:hive2://bigdaiun0.sub03291929060.trainingvcn.oraclevcn.com:2181,bigdaimn0.sub03291929060.trainingvcn.oraclevcn.com:2181,bigdaiwn0.sub03291929060.trainingvcn.oraclevcn.com:2181/default;password=sdewert;serviceDiscoveryMode=zooKeeper;user=sdewert;zooKeeperNamespace=hiveserver2" \
+  --outputformat=csv2 \
+  --showHeader=true \
+  -e "USE sdewert; SELECT * FROM temporal_results" > temporal_results.csv
+
+beeline -u "jdbc:hive2://bigdaiun0.sub03291929060.trainingvcn.oraclevcn.com:2181,bigdaimn0.sub03291929060.trainingvcn.oraclevcn.com:2181,bigdaiwn0.sub03291929060.trainingvcn.oraclevcn.com:2181/default;password=sdewert;serviceDiscoveryMode=zooKeeper;user=sdewert;zooKeeperNamespace=hiveserver2" \
+  --outputformat=csv2 \
+  --showHeader=true \
+  -e "USE sdewert; SELECT * FROM tempo_spatial_results" > tempo_spatial_results.csv
 
 MERGE HDFS files into CSV format:
 
