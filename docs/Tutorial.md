@@ -340,7 +340,8 @@ LIMIT 1000;
 
 OBTAIN your JDBC line from BEELINE:
 
-In BASH, type beeline, then look for your JDBC line as follows:
+In BASH, type beeline, then look for your JDBC line as follows: each user has their own indiidualized JDBC line when logged
+into the beeline.
 
 jdbc:hive2://bigdaiun0.sub03291929060.trainingvcn.oraclevcn.com:2181,bigdaimn0.sub03291929060.trainingvcn.oraclevcn.com:2181,bigdaiwn0.sub03291929060.trainingd=sdewert;serviceDiscoveryMode=zooKeeper;user=sdewert;zooKeeperNamespace=hiveserver2
 
@@ -363,18 +364,13 @@ beeline -u "jdbc:hive2://bigdaiun0.sub03291929060.trainingvcn.oraclevcn.com:2181
   --showHeader=true \
   -e "USE sdewert; SELECT * FROM tempo_spatial_results" > tempo_spatial_results.csv
 
-MERGE HDFS files into CSV format:
-
-hdfs dfs -cat /user/sdewert/export/spatial/HIVE_UNION_SUBDIR_1/* /user/sdewert/export/spatial/HIVE_UNION_SUBDIR_2/* > spatial_results.csv
-hdfs dfs -cat /user/sdewert/export/temporal/HIVE_UNION_SUBDIR_1/* /user/sdewert/export/temporal/HIVE_UNION_SUBDIR_2/* > temporal_results.csv
-hdfs dfs -cat /user/sdewert/export/tempo_spatial/HIVE_UNION_SUBDIR_1/* /user/sdewert/export/tempo_spatial/HIVE_UNION_SUBDIR_2/* > tempo_spatial_results.csv
-
 SCP copy to your local machine:
 scp sdewert@129.153.113.98:/home/sdewert/spatial_results.csv .
 scp sdewert@129.153.113.98:/home/sdewert/temporal_results.csv .
 scp sdewert@129.153.113.98:/home/sdewert/tempo_spatial_results.csv .
 
-<img width="772" height="113" alt="image" src="https://github.com/user-attachments/assets/57557d20-e044-41f1-ade2-02e94983daa2" />
+<img width="1843" height="106" alt="image" src="https://github.com/user-attachments/assets/6cf54b24-ac9a-4cd9-8de0-a1a6a7d17b4b" />
+
 
 
 ## Step 7: Create Visualizations in Power BI
@@ -384,18 +380,26 @@ scp sdewert@129.153.113.98:/home/sdewert/tempo_spatial_results.csv .
 1. **Import Data:**
    - Open Power BI Desktop
    - Get Data → Text/CSV → Select all three CSV files
+
+The Files uploaded are the results files only for the visualization process.
+
 <img width="590" height="59" alt="image" src="https://github.com/user-attachments/assets/0e2dbe2a-3b57-4f1c-bea3-649b4bb602a5" />
 <img width="644" height="55" alt="image" src="https://github.com/user-attachments/assets/dd61fff1-59e2-4e1a-b50c-3c4cd44bad0a" />
 <img width="792" height="255" alt="image" src="https://github.com/user-attachments/assets/f3eafdab-5bdc-4268-9db1-bce747a4b654" />
 
-2. **Create Geographic Heat Map:**
+
+
+2. **Create Geographic Bubble Map:**
    - Insert Map visualization
-   - Location: avg_lat, avg_lon
-   - Size: business_count
-   - Color saturation: avg_rating
+   - Location: spatial_results.city
+   - Legend: spatial_results.avg_rating
+   - Latitude: spatial_results.avg_lat
+   - Longitude: spatial_results.avg_lon
+   - Bubble Size: spatial_results.business_count
    - Add city and state to tooltips
 
-[Screenshot placeholder: Heat map showing business density]
+<img width="1855" height="823" alt="image" src="https://github.com/user-attachments/assets/cb72ff9f-1641-40a1-bc10-d9cbd8527647" />
+
 
 3. **Create Time Series Chart:**
    - Insert Line chart
