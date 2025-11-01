@@ -380,6 +380,10 @@ scp sdewert@129.153.113.98:/home/sdewert/tempo_spatial_results.csv .
 1. **Import Data:**
    - Open Power BI Desktop
    - Get Data → Text/CSV → Select all three CSV files
+<img width="590" height="59" alt="image" src="https://github.com/user-attachments/assets/0e2dbe2a-3b57-4f1c-bea3-649b4bb602a5" />
+<img width="644" height="55" alt="image" src="https://github.com/user-attachments/assets/dd61fff1-59e2-4e1a-b50c-3c4cd44bad0a" />
+<img width="792" height="255" alt="image" src="https://github.com/user-attachments/assets/f3eafdab-5bdc-4268-9db1-bce747a4b654" />
+
 
 [Screenshot placeholder: Power BI data import]
 
