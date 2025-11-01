@@ -340,7 +340,7 @@ LIMIT 1000;
 
 OBTAIN your JDBC line from BEELINE:
 
-In HDFS, type beeline, then look for your JDBC line as follows:
+In BASH, type beeline, then look for your JDBC line as follows:
 
 jdbc:hive2://bigdaiun0.sub03291929060.trainingvcn.oraclevcn.com:2181,bigdaimn0.sub03291929060.trainingvcn.oraclevcn.com:2181,bigdaiwn0.sub03291929060.trainingd=sdewert;serviceDiscoveryMode=zooKeeper;user=sdewert;zooKeeperNamespace=hiveserver2
 
