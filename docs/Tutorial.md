@@ -359,6 +359,8 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 SELECT * FROM tempo_spatial_results;
 
+MERGE HDFS files into CSV format:
+
 hadoop fs -getmerge /user/sdewert/export/spatial spatial_results.csv
 hadoop fs -getmerge /user/sdewert/export/temporal temporal_results.csv
 hadoop fs -getmerge /user/sdewert/export/tempo_spatial tempo_spatial_results.csv
