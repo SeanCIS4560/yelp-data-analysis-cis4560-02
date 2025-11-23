@@ -80,6 +80,8 @@ are developed after implementing the code above as well:
 So use the following command and you should see the following
 outputs:
 
+hdfs dfs -ls /user/username/yelp_project/
+
 <img width="1007" height="127" alt="image" src="https://github.com/user-attachments/assets/5ad38640-9a4d-47e0-9b4d-819856f6c3a6" />
 
 
