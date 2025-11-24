@@ -455,6 +455,9 @@ Insert Line chart
 
 ### 4. Create Interactive Dashboard:
 
+<img width="975" height="427" alt="image" src="https://github.com/user-attachments/assets/b8652477-a08f-418d-a359-bc15146e34ab" />
+
+
 - Add State slicer (filter)
 - Add Year slicer
 - Create matrix: Cities (rows) × Months (columns) × Reviews (values)
