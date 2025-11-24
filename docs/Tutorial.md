@@ -344,6 +344,8 @@ LIMIT 1000;
 
 OBTAIN your JDBC line from BEELINE:
 
+JDBC stands for Java Database Connectivity - it's essentially a URL/address that tells beeline exactly how to connect to your Hive database.
+
 In BASH, type beeline, then look for your JDBC line as follows: each user has their own indiidualized JDBC line when logged
 into the beeline.
 
