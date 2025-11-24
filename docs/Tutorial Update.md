@@ -435,6 +435,8 @@ Insert Map visualization
 
 ### 3. Create Time Series Chart:
 
+<img width="975" height="551" alt="image" src="https://github.com/user-attachments/assets/f34e1363-45ec-4180-a148-3ccd623d4b84" />
+
 Insert Line chart
 
 **Configure Fields:**
