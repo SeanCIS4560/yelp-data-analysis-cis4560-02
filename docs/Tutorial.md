@@ -126,7 +126,9 @@ drwxr-xr-x - sdewert hdfs 0 2025-10-15 /user/sdewert/yelp_project/checkin
    ```
 
 Add JsonSerDe JAR if needed:
+
 ADD JAR /usr/lib/hive-hcatalog/share/hcatalog/hive-hcatalog-core.jar;
+
 This handles the deliminiting for the tables.
 
 3. Create the three main tables:
