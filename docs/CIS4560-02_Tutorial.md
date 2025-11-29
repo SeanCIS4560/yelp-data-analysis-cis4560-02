@@ -42,7 +42,8 @@ In this hands-on lab, we will go over how to:
 
 2. Download the compressed dataset (approximately 4.24 GB) - We downloaded it to a folder on the desktop, to extract to named Yelp-Data.
 
-> ![Yelp Dataset Extraction](media/image1.png)
+> <img width="975" height="469" alt="image" src="https://github.com/user-attachments/assets/3441e41d-84d2-4b05-b82f-a1563053e393" />
+
 >
 > You should see 5 JSON files extracted from the Yelp-Data set.
 
@@ -86,7 +87,8 @@ So, use the following command and you should see the following outputs:
 hdfs dfs -ls /user/username/yelp_project/
 ```
 
-![HDFS Directory Listing](media/image2.png)
+<img width="975" height="128" alt="image" src="https://github.com/user-attachments/assets/6fe48f46-073d-4ac1-a551-baac6ae9aa82" />
+
 
 **Upload JSON files (this may take 10-15 minutes):**
 
@@ -108,7 +110,8 @@ hdfs dfs -put yelp_academic_dataset_tip.json /user/sdewert/yelp_project/tip/
 hdfs dfs -put yelp_academic_dataset_user.json /user/sdewert/yelp_project/user/
 ```
 
-![HDFS Put Commands](media/image3.png)
+<img width="975" height="156" alt="image" src="https://github.com/user-attachments/assets/540bec10-48f5-48f8-aa48-7517f9459673" />
+
 
 4. Verify upload and check file sizes:
 
@@ -118,7 +121,8 @@ hdfs dfs -ls -h /user/sdewert/yelp_project/
 
 Expected output:
 
-![HDFS File Sizes](media/image4.png)
+<img width="975" height="152" alt="image" src="https://github.com/user-attachments/assets/d9e2753e-0f26-4d42-bb36-721eab127f6e" />
+
 
 ---
 
@@ -168,7 +172,8 @@ LOCATION '/user/sdewert/yelp_project/business/';
 
 Hive doesn't know how to parse JSON, so it would try to read the file as a plaintext, with default delimiters. So, we need the command `ROW FORMAT SERDE 'org.apache.hive.hcatalog.data.JsonSerDe'`, that reads each line as the JSON object, parses the JSON structure, and maps the JSON fields to our table columns.
 
-![Business Table Creation](media/image5.png)
+<img width="563" height="392" alt="image" src="https://github.com/user-attachments/assets/870ea49b-6b5f-409a-9e29-39c50378c945" />
+
 
 ### Review Table:
 
@@ -191,7 +196,8 @@ STORED AS TEXTFILE
 LOCATION '/user/sdewert/yelp_project/review/';
 ```
 
-![Review Table Creation](media/image6.png)
+<img width="559" height="277" alt="image" src="https://github.com/user-attachments/assets/9bc67183-2c9e-4294-8f89-bed28e49d25e" />
+
 
 ### Check-in Table:
 
@@ -266,19 +272,22 @@ LOCATION '/user/sdewert/yelp_project/tip/';
 SELECT COUNT(*) as business_count FROM business;
 ```
 
-![Business Count](media/image8.png)
+<img width="244" height="120" alt="image" src="https://github.com/user-attachments/assets/e07121b1-070f-42f1-921e-f88bfa53b144" />
+
 
 ```sql
 SELECT COUNT(*) as review_count FROM review;
 ```
 
-![Review Count](media/image9.png)
+<img width="194" height="103" alt="image" src="https://github.com/user-attachments/assets/8f21ac2a-718e-4727-b751-1f587b79709d" />
+
 
 ```sql
 SELECT COUNT(*) as checkin_count FROM checkin;
 ```
 
-![Checkin Count](media/image10.png)
+<img width="223" height="109" alt="image" src="https://github.com/user-attachments/assets/9b910b46-05d5-40dd-97af-b4b04369e41d" />
+
 
 ---
 
@@ -311,7 +320,8 @@ FROM business
 WHERE latitude IS NOT NULL AND longitude IS NOT NULL;
 ```
 
-![Business Clean Table](media/image11.png)
+<img width="473" height="273" alt="image" src="https://github.com/user-attachments/assets/0d0fa258-49e0-4be8-a36c-8b6901e29cdd" />
+
 
 ### Clean Review Data (Temporal Focus):
 
@@ -338,7 +348,6 @@ WHERE
     AND `date` >= '2010-01-01';
 ```
 
-![Review Clean Table](media/image12.png)
 
 ### Clean Check-in Data:
 
@@ -353,8 +362,6 @@ SELECT
 FROM checkin
 WHERE `date` IS NOT NULL;
 ```
-
-![Checkin Clean Table](media/image13.png)
 
 ### Clean the Tip Table:
 
@@ -670,13 +677,15 @@ Steps for creating the heat map comparisons for the project:
 - Change Text Box to: **November - Seasonal Engagement Density**.
 - **Take Screenshot.**
 
-![July Heat Map - Seasonal Engagement Density](media/image14.png)
+<img width="975" height="675" alt="image" src="https://github.com/user-attachments/assets/6859b306-007e-485f-8af5-56bcebcc2025" />
+
 
 July Map above:
 
 November Map Below:
 
-![November Heat Map - Seasonal Engagement Density](media/image15.png)
+<img width="975" height="503" alt="image" src="https://github.com/user-attachments/assets/5c3ef8c5-d8cb-4737-9006-c4990e1e5251" />
+
 
 ### Create the Pie Chart for Summer and Fall Sentiment:
 
@@ -710,11 +719,13 @@ November Map Below:
 - **Color Foundation:** Verify colors match the list above (1=Red, 5=Green).
 - **Capture Screenshot.**
 
-![July Sentiment Pie Chart (Summer Rush)](media/image16.png)
+<img width="871" height="508" alt="image" src="https://github.com/user-attachments/assets/875f37e8-ac40-474f-ae21-a337b99b4f19" />
+
 
 Above July, Below November:
 
-![November Sentiment Pie Chart (Seasonal Drop)](media/image17.png)
+<img width="975" height="559" alt="image" src="https://github.com/user-attachments/assets/0d630e6d-14e8-454b-9ae7-500759773c28" />
+
 
 ### Create a Categories Map for the Five Most Popular Business in July and November:
 
@@ -749,11 +760,13 @@ Matches Tutorial Figure 8.A and 8.B
   - **Labels:** Add Category Name and Percentage.
 - **Save:** Take a screenshot.
 
-![Top Categories July Donut Chart](media/image18.png)
+<img width="975" height="597" alt="image" src="https://github.com/user-attachments/assets/514ac4ff-121c-4c19-ba12-d1c650978f9a" />
+
 
 July above, November Below:
 
-![Top Categories November Donut Chart](media/image19.png)
+<img width="939" height="566" alt="image" src="https://github.com/user-attachments/assets/de3cf374-4d36-46be-967d-f51e90df18f8" />
+
 
 ### Create Spatial Visualization for 5-Star and 1-Star Businesses:
 
@@ -781,11 +794,13 @@ July above, November Below:
 - **Label:** Rename the Layer to **"Low Quality (1-Star)"**.
 - **Save:** Take a screenshot of the red clusters.
 
-![5-Star Business Spatial Visualization](media/image20.png)
+<img width="975" height="411" alt="image" src="https://github.com/user-attachments/assets/6ab5442f-3418-4be0-8710-0537af0a6edd" />
+
 
 5-Star Businesses Above and 1-Star Business Below:
 
-![1-Star Business Spatial Visualization](media/image21.png)
+<img width="975" height="516" alt="image" src="https://github.com/user-attachments/assets/704b7ed6-fd5c-4d9a-9af6-c57cd9800891" />
+
 
 ---
 
