@@ -1,4 +1,4 @@
-# CIS4250-02 Term Project Tutorial
+# CIS4560-02 Term Project Tutorial
 
 **Authors:** Sean Dewert, Abraham Rosales, Edgar Lomeli, Mike Barba, Zaeem Malik
 
