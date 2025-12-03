@@ -35,7 +35,7 @@ Big Data Analysis of Yelp Dataset using Hadoop/Hive for CIS4560-02 Term Project 
 
 ## Hardware/Cluster Specifications:
 - **Cluster Type:** Oracle Cloud Infrastructure
-- **Number of Worker Nodes:** 3
+- **Number of Worker Nodes:** 5
 - **CPU Model:** AMD EPYC 7763 64-Core Processor
 - **CPU Cores:** 6
 - **CPU Speed:** 2445.406 MHz
